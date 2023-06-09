@@ -16,7 +16,7 @@ class TicTacToe:
     # <----- Constructor ----->
 
     def __init__(self: TicTacToe, first_player: int = 0) -> None:
-        if 0 > first_player > 1: raise Exception("the first player must be 0 (player 1) or 1 (player 2)")
+        if 0 > first_player or first_player > 1: raise Exception("the first player must be 0 (player 1) or 1 (player 2)")
 
         self.__grid: list[list[str]] =  [[" "]*3 for i in range(3)]
         self.__current_player: int = first_player
@@ -37,8 +37,7 @@ class TicTacToe:
         return self.__grid[ceil(target / 3) - 1][target % 3 - 1] not in TicTacToe.__MARKS
 
     def set_target(self: TicTacToe, target: int) -> bool:
-        if 0 > target > 9: raise Exception("the target must be between 1 and 9 inclusive")
-
+        if 0 > target or target > 9: raise Exception("the target must be between 1 and 9 inclusive")
         if not self.__is_valid_target(target): return False
         else:
             self.__grid[ceil(target / 3) - 1][target % 3 - 1] = TicTacToe.__MARKS[self.__current_player]
