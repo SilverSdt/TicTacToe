@@ -50,6 +50,50 @@ class Testing(unittest.TestCase):
         self.assertEqual(t.__str__(), "['X' 'O' 'X']\n['O' 'X' 'O']\n['X' 'X' 'X']\n")
         self.assertEqual(t.current_player, 0)
 
+
+    def test_is_full(self: Testing):
+        t: TicTacToe = TicTacToe()
+        for i in range(1, 9):
+            t.set_target(i)
+            self.assertFalse(t.is_full())
+
+        t.set_target(9)
+        self.assertTrue(t.is_full())
+
+    def test_is_player_win(self: Testing):
+        t: TicTacToe = TicTacToe()
+        self.assertFalse(t.is_player_win())
+
+        t.set_target(1)
+        t.set_target(4)
+        t.set_target(2)
+        t.set_target(5)
+        t.set_target(3)
+        self.assertTrue(t.is_player_win())
+
+        t: TicTacToe = TicTacToe()
+        t.set_target(1)
+        t.set_target(2)
+        t.set_target(4)
+        t.set_target(5)
+        t.set_target(7)
+        self.assertTrue(t.is_player_win())
+
+        t: TicTacToe = TicTacToe()
+        t.set_target(1)
+        t.set_target(2)
+        t.set_target(5)
+        t.set_target(6)
+        t.set_target(9)
+        self.assertTrue(t.is_player_win())
+
+        t: TicTacToe = TicTacToe()
+        t.set_target(3)
+        t.set_target(2)
+        t.set_target(5)
+        t.set_target(6)
+        t.set_target(7)
+        self.assertTrue(t.is_player_win())
 # <========== Main ==========>
 if __name__ == '__main__':
     unittest.main()
