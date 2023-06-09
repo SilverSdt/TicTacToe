@@ -37,7 +37,7 @@ class TicTacToe:
         return self.__grid[ceil(target / 3) - 1][target % 3 - 1] not in TicTacToe.__MARKS
 
     def set_target(self: TicTacToe, target: int) -> bool:
-        if 0 > target or target > 9: raise Exception("the target must be between 1 and 9 inclusive")
+        if target < 1 and target > 9: raise Exception("the target must be between 1 and 9 inclusive")
         if not self.__is_valid_target(target): return False
         else:
             self.__grid[ceil(target / 3) - 1][target % 3 - 1] = TicTacToe.__MARKS[self.__current_player]
@@ -65,3 +65,4 @@ class TicTacToe:
             return True
 
         return False
+    
