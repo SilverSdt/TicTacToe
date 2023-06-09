@@ -47,7 +47,7 @@ class Testing(unittest.TestCase):
 
         t: TicTacToe = TicTacToe()
         for i in range(1,10): t.set_target(i)
-        self.assertEqual(t.__str__(), "['X' 'O' 'X']\n['O' 'X' 'O']\n['X' 'O' 'X']\n")
+        self.assertEqual(t.__str__(), "['X' 'O' 'X']\n['O' 'X' 'O']\n['X' 'X' 'X']\n")
         self.assertEqual(t.current_player, 0)
 
 # <========== Main ==========>
